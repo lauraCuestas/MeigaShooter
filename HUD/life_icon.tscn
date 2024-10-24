@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcicaoecx5lc4"]
+
+[ext_resource type="Texture2D" uid="uid://b5e18gtpcdfnn" path="res://Textures/bruja_vidas_sprite_v02.png" id="1_uv5vi"]
+
+[node name="lifeIcon" type="TextureRect"]
+offset_right = 65.0
+offset_bottom = 56.0
+texture = ExtResource("1_uv5vi")

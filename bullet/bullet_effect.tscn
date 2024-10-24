@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx46gxceudcw7"]
+
+[ext_resource type="Texture2D" uid="uid://x1usqy5ud0xa" path="res://Textures/estrella_sprite_v02.png" id="1_pkor3"]
+[ext_resource type="Script" path="res://bullet/bullet_effect.gd" id="2_bgt5n"]
+
+[node name="bulletEffect" type="Sprite2D"]
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("1_pkor3")
+script = ExtResource("2_bgt5n")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

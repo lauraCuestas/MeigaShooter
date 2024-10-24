@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnastox18si4e"]
+
+[ext_resource type="Script" path="res://Interfaces/mainMenu.gd" id="1_ep00t"]
+[ext_resource type="Texture2D" uid="uid://cndevgne4hf8h" path="res://Textures/fondo_sprite_v01.png" id="1_hk6ts"]
+[ext_resource type="Texture2D" uid="uid://c7dp6773yqiva" path="res://Textures/titulo_v01.png" id="2_dtj6e"]
+[ext_resource type="Theme" uid="uid://37j1rc2n27gf" path="res://Interfaces/theme.tres" id="3_ngeow"]
+[ext_resource type="Texture2D" uid="uid://d4kdxpuooi2h1" path="res://Textures/boton_v02.png" id="4_ontqy"]
+[ext_resource type="StyleBox" uid="uid://nsxa6tnxp0to" path="res://Interfaces/mainMenuEmptyBox.tres" id="6_xdsen"]
+[ext_resource type="AudioStream" uid="uid://cox4snve5pfbm" path="res://audio/canciones/Next to You.mp3" id="7_l7heu"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ep00t")
+
+[node name="fondo" type="Sprite2D" parent="."]
+position = Vector2(-152.675, 0)
+texture = ExtResource("1_hk6ts")
+centered = false
+
+[node name="titulo" type="Sprite2D" parent="."]
+texture = ExtResource("2_dtj6e")
+centered = false
+
+[node name="Controles" type="Button" parent="."]
+offset_left = 340.0
+offset_top = 440.375
+offset_right = 684.0
+offset_bottom = 508.375
+theme = ExtResource("3_ngeow")
+theme_override_colors/font_color = Color(0.839216, 0.741176, 0.537255, 1)
+theme_override_styles/normal = ExtResource("6_xdsen")
+theme_override_styles/hover = ExtResource("6_xdsen")
+theme_override_styles/pressed = ExtResource("6_xdsen")
+theme_override_styles/disabled = ExtResource("6_xdsen")
+theme_override_styles/focus = ExtResource("6_xdsen")
+text = "Controles"
+icon = ExtResource("4_ontqy")
+flat = true
+icon_alignment = 1
+
+[node name="Xogar" type="Button" parent="."]
+offset_left = 340.0
+offset_top = 358.2
+offset_right = 684.0
+offset_bottom = 426.2
+theme = ExtResource("3_ngeow")
+theme_override_colors/font_color = Color(0.839216, 0.741176, 0.537255, 1)
+theme_override_styles/normal = ExtResource("6_xdsen")
+theme_override_styles/hover = ExtResource("6_xdsen")
+theme_override_styles/pressed = ExtResource("6_xdsen")
+theme_override_styles/disabled = ExtResource("6_xdsen")
+theme_override_styles/focus = ExtResource("6_xdsen")
+text = "Xogar"
+icon = ExtResource("4_ontqy")
+flat = true
+icon_alignment = 1
+
+[node name="Sair" type="Button" parent="."]
+offset_left = 340.0
+offset_top = 520.33
+offset_right = 684.0
+offset_bottom = 588.33
+theme = ExtResource("3_ngeow")
+theme_override_colors/font_color = Color(0.839216, 0.741176, 0.537255, 1)
+theme_override_styles/normal = ExtResource("6_xdsen")
+theme_override_styles/hover = ExtResource("6_xdsen")
+theme_override_styles/pressed = ExtResource("6_xdsen")
+theme_override_styles/disabled = ExtResource("6_xdsen")
+theme_override_styles/focus = ExtResource("6_xdsen")
+text = "Saír"
+icon = ExtResource("4_ontqy")
+flat = true
+icon_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_l7heu")
+autoplay = true
+
+[connection signal="pressed" from="Controles" to="." method="_on_controles_pressed"]
+[connection signal="pressed" from="Xogar" to="." method="_on_xogar_pressed"]
+[connection signal="pressed" from="Sair" to="." method="_on_sair_pressed"]

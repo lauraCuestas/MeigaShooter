@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://bjao23agqnrx0"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_rlshq"]
+[ext_resource type="Texture2D" uid="uid://cyjm2rbchcki3" path="res://Textures/bruja_abajo_sprite_v01.png" id="2_bqk5b"]
+[ext_resource type="Texture2D" uid="uid://deon18kjd71dm" path="res://Textures/bruja_arriba_sprite_v01.png" id="3_05iqa"]
+[ext_resource type="Texture2D" uid="uid://dyyrp0khxqyuy" path="res://Textures/bruja_idle1_sprite_v01.png" id="4_71ica"]
+[ext_resource type="Texture2D" uid="uid://cxrudpuq00327" path="res://Textures/bruja_idle2_sprite_v01.png" id="5_8ocro"]
+[ext_resource type="AudioStream" uid="uid://cmfh0cor6m8vm" path="res://audio/disparar.mp3" id="6_pa0tf"]
+[ext_resource type="AudioStream" uid="uid://dy6bqe17tfvty" path="res://audio/dañoPersonaje.mp3" id="7_0uug4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0iiro"]
+radius = 13.3307
+height = 100.511
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qo2kg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bqk5b")
+}],
+"loop": true,
+"name": &"abajo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_05iqa")
+}],
+"loop": true,
+"name": &"arriba",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_71ica")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8ocro")
+}],
+"loop": true,
+"name": &"recto",
+"speed": 5.0
+}]
+
+[node name="player" type="Area2D"]
+z_index = 100
+script = ExtResource("1_rlshq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10.425, 5.29)
+rotation = 0.479966
+shape = SubResource("CapsuleShape2D_0iiro")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 100
+position = Vector2(-7, 7)
+scale = Vector2(0.205103, 0.233984)
+sprite_frames = SubResource("SpriteFrames_qo2kg")
+animation = &"recto"
+
+[node name="firingPosition" type="Node2D" parent="."]
+position = Vector2(74, 13)
+
+[node name="fireDelay" type="Timer" parent="."]
+one_shot = true
+
+[node name="lifeInvencibilty" type="Timer" parent="."]
+one_shot = true
+
+[node name="fireSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_pa0tf")
+
+[node name="damageSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_0uug4")

@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://tfmpw0b4mkac"]
+
+[ext_resource type="Script" path="res://bullet/bullet.gd" id="1_g5t46"]
+[ext_resource type="Texture2D" uid="uid://bx38fufsn3rfs" path="res://Textures/hechizo_sprite1_v04.png" id="2_yksm7"]
+[ext_resource type="Texture2D" uid="uid://dfco7yro5teeu" path="res://Textures/hechizo_sprite2_v04.png" id="3_htxhm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wuq76"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yksm7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_htxhm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yurga"]
+radius = 7.0
+height = 84.0
+
+[node name="bullet" type="Area2D"]
+script = ExtResource("1_g5t46")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(37, -19)
+scale = Vector2(0.675, 0.675)
+sprite_frames = SubResource("SpriteFrames_wuq76")
+autoplay = "default"
+frame_progress = 0.227219
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(35.27, 0.804993)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_yurga")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+position = Vector2(4.76837e-07, -4.76837e-07)
+scale = Vector2(0.5, 1.7)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://do3mj2lbdaf3u"]
+
+[ext_resource type="PackedScene" uid="uid://cc78f177k6oab" path="res://obstaculoIndestructible/obstaculo_indestructible.tscn" id="1_kfyat"]
+
+[node name="ObstaculoIndestructible02" instance=ExtResource("1_kfyat")]
+scale = Vector2(0.66, 0.66)

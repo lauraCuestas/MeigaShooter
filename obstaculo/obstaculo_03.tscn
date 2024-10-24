@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxff0t11e0eli"]
+
+[ext_resource type="PackedScene" uid="uid://dhmoafwinjqsc" path="res://obstaculo/obstaculo.tscn" id="1_ktxhi"]
+
+[node name="obstaculo03" instance=ExtResource("1_ktxhi")]
+scale = Vector2(0.49, 0.49)
+scoreValue = 3.0

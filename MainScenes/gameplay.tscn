@@ -1,0 +1,98 @@
+[gd_scene load_steps=11 format=3 uid="uid://tkx3j77oxwte"]
+
+[ext_resource type="PackedScene" uid="uid://bjao23agqnrx0" path="res://player/player.tscn" id="1_251x2"]
+[ext_resource type="Texture2D" uid="uid://cv4cmensmap5v" path="res://Textures/fondoSinNubes_sprite_v01.png" id="1_u6kpd"]
+[ext_resource type="Texture2D" uid="uid://btn7522o4b5yl" path="res://Textures/fondoNubes_sprite_v01.png" id="3_adubf"]
+[ext_resource type="Texture2D" uid="uid://cmk8em2sd5iou" path="res://Textures/nubesDelante_sprite_v02.png" id="4_b3ur2"]
+[ext_resource type="Texture2D" uid="uid://dgvkf0w6s4wse" path="res://Textures/starSmall.png" id="4_j14h4"]
+[ext_resource type="PackedScene" uid="uid://cnbtb1rpqlxpq" path="res://HUD/hud.tscn" id="5_mamu6"]
+[ext_resource type="Script" path="res://MainScenes/ParallaxBackground.gd" id="7_i633b"]
+[ext_resource type="Script" path="res://obstaculo/Spawner.gd" id="9_enbf4"]
+[ext_resource type="AudioStream" uid="uid://dyu5vkrtdg2xi" path="res://audio/canciones/mythica.mp3" id="10_xse8h"]
+[ext_resource type="Script" path="res://obstaculoIndestructible/treeSpawner.gd" id="11_b1ik1"]
+
+[node name="Gameplay" type="Node2D"]
+
+[node name="HUD" parent="." instance=ExtResource("5_mamu6")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = -3.05176e-05
+offset_right = 1024.98
+offset_bottom = -3.05176e-05
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("7_i633b")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1604, 0)
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+z_index = -200
+scale = Vector2(1.70467, 1.00312)
+texture = ExtResource("1_u6kpd")
+centered = false
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ParallaxBackground/ParallaxLayer3/Background"]
+position = Vector2(610.09, 314.019)
+scale = Vector2(4.02034, 4.2866)
+amount = 50
+lifetime = 20.0
+texture = ExtResource("4_j14h4")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 80)
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+angle_min = 119.3
+angle_max = 189.0
+scale_amount_min = 0.0
+scale_amount_max = 2.5
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -100
+z_as_relative = false
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(1604, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+z_index = -200
+z_as_relative = false
+position = Vector2(512, 320)
+texture = ExtResource("3_adubf")
+
+[node name="player" parent="ParallaxBackground" instance=ExtResource("1_251x2")]
+z_as_relative = false
+position = Vector2(161, 303)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1604, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+modulate = Color(1, 1, 1, 0.458824)
+position = Vector2(512, 320)
+texture = ExtResource("4_b3ur2")
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2(1176, 130)
+script = ExtResource("9_enbf4")
+
+[node name="SpawnTimer" type="Timer" parent="Spawner"]
+one_shot = true
+
+[node name="treeSpawner" type="Node2D" parent="."]
+position = Vector2(1044, 648)
+script = ExtResource("11_b1ik1")
+
+[node name="spawnTreeTimer" type="Timer" parent="treeSpawner"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_xse8h")
+autoplay = true
+
+[connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="treeSpawner/spawnTreeTimer" to="treeSpawner" method="_on_spawn_tree_timer_timeout"]

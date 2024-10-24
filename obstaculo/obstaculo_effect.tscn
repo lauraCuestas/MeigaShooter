@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://dta45x2fp6wnn"]
+
+[ext_resource type="Texture2D" uid="uid://d3tirah43miyo" path="res://Textures/nubeChiquita_sprite_v01.png" id="1_0bb7g"]
+[ext_resource type="Script" path="res://obstaculo/obstaculo_effect.gd" id="2_2i3ac"]
+[ext_resource type="AudioStream" uid="uid://n0hk0fu5aysd" path="res://audio/pop1.ogg" id="3_m6l1f"]
+[ext_resource type="AudioStream" uid="uid://xr0h0m0ou1h6" path="res://audio/pop2.ogg" id="4_ld53s"]
+[ext_resource type="AudioStream" uid="uid://b7q0txjfnwrx8" path="res://audio/pop3.ogg" id="5_bevrt"]
+
+[sub_resource type="Gradient" id="Gradient_qwu7c"]
+offsets = PackedFloat32Array(0, 0.331126)
+colors = PackedColorArray(1, 1, 1, 1, 0.329412, 0.329412, 0.329412, 0)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_itrqo"]
+streams_count = 3
+stream_0/stream = ExtResource("3_m6l1f")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_ld53s")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_bevrt")
+stream_2/weight = 1.0
+
+[node name="obstaculoEffect" type="CPUParticles2D"]
+emitting = false
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+texture = ExtResource("1_0bb7g")
+emission_shape = 1
+emission_sphere_radius = 47.32
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 29.8
+initial_velocity_max = 70.0
+angular_velocity_min = -261.82
+angular_velocity_max = 87.27
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+color_ramp = SubResource("Gradient_qwu7c")
+script = ExtResource("2_2i3ac")
+
+[node name="popSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_itrqo")

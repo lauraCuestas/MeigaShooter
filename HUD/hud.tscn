@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnbtb1rpqlxpq"]
+
+[ext_resource type="PackedScene" uid="uid://dcicaoecx5lc4" path="res://HUD/life_icon.tscn" id="1_86v1h"]
+[ext_resource type="Script" path="res://HUD/hud.gd" id="1_o7718"]
+[ext_resource type="Theme" uid="uid://37j1rc2n27gf" path="res://Interfaces/theme.tres" id="3_vrlui"]
+
+[node name="HUD" type="Control"]
+z_index = 200
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o7718")
+
+[node name="lifeContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 199.0
+grow_horizontal = 2
+scale = Vector2(0.435, 0.435)
+theme_override_constants/separation = 30
+
+[node name="lifeIcon" parent="lifeContainer" instance=ExtResource("1_86v1h")]
+layout_mode = 2
+
+[node name="lifeIcon2" parent="lifeContainer" instance=ExtResource("1_86v1h")]
+layout_mode = 2
+
+[node name="lifeIcon3" parent="lifeContainer" instance=ExtResource("1_86v1h")]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 431.5
+offset_top = 22.005
+offset_right = 431.499
+offset_bottom = 71.005
+grow_horizontal = 2
+theme = ExtResource("3_vrlui")
+theme_override_colors/font_color = Color(0.870588, 0.72549, 0.576471, 1)
+text = "0"
+horizontal_alignment = 1
+
+[node name="Puntuacion" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 307.445
+offset_top = 22.005
+offset_right = 307.445
+offset_bottom = 71.005
+grow_horizontal = 2
+theme = ExtResource("3_vrlui")
+theme_override_colors/font_color = Color(0.870588, 0.72549, 0.576471, 1)
+text = "Puntuación:"
+horizontal_alignment = 1

@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://cv8yibobvmt5f"]
+
+[ext_resource type="Texture2D" uid="uid://cndevgne4hf8h" path="res://Textures/fondo_sprite_v01.png" id="1_68kqp"]
+[ext_resource type="Script" path="res://Interfaces/controles.gd" id="1_katj3"]
+[ext_resource type="Theme" uid="uid://37j1rc2n27gf" path="res://Interfaces/theme.tres" id="2_weo1v"]
+[ext_resource type="StyleBox" uid="uid://nsxa6tnxp0to" path="res://Interfaces/mainMenuEmptyBox.tres" id="3_rysea"]
+[ext_resource type="Texture2D" uid="uid://xj12ywbkqxas" path="res://Textures/pantalla_controles_letras.png" id="5_o7q68"]
+[ext_resource type="AudioStream" uid="uid://dcsj3n6dh8b8m" path="res://audio/canciones/Cat caffe.mp3" id="7_x5dsy"]
+
+[node name="Controles" type="Node2D"]
+script = ExtResource("1_katj3")
+
+[node name="fondo" type="Sprite2D" parent="."]
+position = Vector2(-152.675, 0)
+texture = ExtResource("1_68kqp")
+centered = false
+
+[node name="Xogar" type="Button" parent="."]
+offset_right = 1024.0
+offset_bottom = 640.0
+theme = ExtResource("2_weo1v")
+theme_override_colors/font_color = Color(0.839216, 0.741176, 0.537255, 1)
+theme_override_styles/normal = ExtResource("3_rysea")
+theme_override_styles/hover = ExtResource("3_rysea")
+theme_override_styles/pressed = ExtResource("3_rysea")
+theme_override_styles/disabled = ExtResource("3_rysea")
+theme_override_styles/focus = ExtResource("3_rysea")
+flat = true
+icon_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("5_o7q68")
+centered = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_x5dsy")
+autoplay = true
+
+[connection signal="pressed" from="Xogar" to="." method="_on_xogar_pressed"]
